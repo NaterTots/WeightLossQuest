@@ -6,10 +6,15 @@ public class HUDScript : MonoBehaviour
 	private GUIText weightLabelText;
 	private float currentWeight;
 
+	private GUIText AccelXLabelText;
+	private GUIText AccelYLabelText;
+	private GUIText AccelZLabelText;
+
 	void Awake()
 	{
 		EventManager eventManager = ServiceManager.Instance.GetService<EventManager>(ServiceType.EventManager);
 		eventManager.Subscribe(StatsManager.NewWeight, OnNewWeight);
+		eventManager.Subscribe(InputManager.Accelerometer, OnAccelerometer);
 	}
 
 	// Use this for initialization
@@ -18,14 +23,17 @@ public class HUDScript : MonoBehaviour
 		GameObject weightLabel = GameObject.Find("WeightLabel");
 		weightLabelText = weightLabel.GetComponent<GUIText>();
 
+		GameObject accelXLabel = GameObject.Find("AccelX");
+		AccelXLabelText = accelXLabel.GetComponent<GUIText>();
+		
+		GameObject accelYLabel = GameObject.Find("AccelY");
+		AccelYLabelText = accelYLabel.GetComponent<GUIText>();
+		
+		GameObject accelZLabel = GameObject.Find("AccelZ");
+		AccelZLabelText = accelZLabel.GetComponent<GUIText>();
+
 		ServiceManager.Instance.GetService<StatsManager>(ServiceType.StatsManager).Initialize();
 		UpdateWeight();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
 	}
 
 	void OnNewWeight(IEventArgs eventArgs)
@@ -35,6 +43,15 @@ public class HUDScript : MonoBehaviour
 		UpdateWeight();
 	}
 
+	void OnAccelerometer(IEventArgs eventArgs)
+	{
+		AccelerometerEventArgs accelEvents = (AccelerometerEventArgs)eventArgs;
+
+		AccelXLabelText.text = "Accelerometer X: " + accelEvents.Accelerometer.x;
+		AccelYLabelText.text = "Accelerometer Y: " + accelEvents.Accelerometer.y;
+		AccelZLabelText.text = "Accelerometer Z: " + accelEvents.Accelerometer.z;
+	}
+	
 	private void UpdateWeight()
 	{
 		weightLabelText.text = "Current Weight: " + currentWeight + " lbs";

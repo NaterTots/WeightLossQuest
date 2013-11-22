@@ -10,10 +10,15 @@ public class BallScript : MonoBehaviour {
 
 	private Vector3 startPosition;
 
+	private GUIText fattyEvents;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		startPosition = transform.position;
 		ServiceManager.Instance.GetService<EventManager>(ServiceType.EventManager).Subscribe("Input_MoveCharacter", OnMove);
+
+		fattyEvents = GameObject.Find("FattyEvents").GetComponent<GUIText>();
 	}
 
 	void FixedUpdate() {
@@ -31,6 +36,8 @@ public class BallScript : MonoBehaviour {
 	
 	void OnMove(IEventArgs eventArgs)
 	{
+		fattyEvents.text = "OnMove";
+
 		MovementEventArgs movementArgs = (MovementEventArgs)eventArgs;
 		horizontalAxis = movementArgs.HorizonalAxis;
 		verticalAxis = movementArgs.VerticalAxis;

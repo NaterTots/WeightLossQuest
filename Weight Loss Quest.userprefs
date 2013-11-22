@@ -1,14 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Collectibles\CollectibleBase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game Object Scripts\SodaScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\Managers\StatsManager.cs" Line="18" Column="33" />
-      <File FileName="Assets\Scripts\Managers\InputManager.cs" Line="81" Column="1" />
-      <File FileName="Assets\Scripts\Managers\ServiceManager.cs" Line="56" Column="1" />
+      <File FileName="Assets\Scripts\Managers\StatsManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\InputManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\ServiceManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game Object Scripts\BallScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game Object Scripts\HUDScript.cs" Line="77" Column="1" />
-      <File FileName="Assets\Scripts\Managers\EventManager.cs" Line="94" Column="1" />
-      <File FileName="Assets\Scripts\Collectibles\CollectibleBase.cs" Line="26" Column="29" />
+      <File FileName="Assets\Scripts\Game Object Scripts\HUDScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\EventManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game Object Scripts\SodaScript.cs" Line="21" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

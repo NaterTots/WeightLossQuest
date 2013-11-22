@@ -11,9 +11,9 @@ public class StatsManager : IService
 	private EventManager eventManager;
 
 	// Use this for initialization
-	public StatsManager (EventManager eventMan) 
+	public StatsManager () 
 	{
-		eventManager = eventMan;
+		eventManager = ServiceManager.Instance.GetService<EventManager>(ServiceType.EventManager);
 		eventManager.Register(WeightChange);
 		eventManager.Register(NewWeight);
 

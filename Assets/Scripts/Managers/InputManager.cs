@@ -4,7 +4,10 @@ using System.Collections;
 public class InputManager : MonoBehaviour, IService 
 {
 	public static string CharacterMove = "Input_MoveCharacter";
-	
+
+	public static string Accelerometer = "Input_Accelerometer";
+
+
 	public bool usePotentiometer;
 
 	EventManager _eventManager;
@@ -12,7 +15,8 @@ public class InputManager : MonoBehaviour, IService
 	void Awake()
 	{
 		_eventManager = ServiceManager.Instance.GetService<EventManager>(ServiceType.EventManager);
-		_eventManager.Register(CharacterMove);	
+		_eventManager.Register(CharacterMove);
+		_eventManager.Register(Accelerometer);
 	}
 	
 	// Use this for initialization
@@ -32,7 +36,10 @@ public class InputManager : MonoBehaviour, IService
 		
 		if (usePotentiometer)
 		{
+			horizontal = Input.acceleration.x;
+			vertical = Input.acceleration.y;
 
+			_eventManager.FireEvent(Accelerometer, new AccelerometerEventArgs(Input.acceleration));
 		}
 		else
 		{
@@ -76,5 +83,22 @@ public class MovementEventArgs : IEventArgs
 	{
 		_horizontalAxis = horizontal;
 		_verticalAxis = vertical;
+	}
+}
+
+public class AccelerometerEventArgs : IEventArgs
+{
+	private Vector3 _accelerometer;
+	public Vector3 Accelerometer
+	{
+		get
+		{
+			return _accelerometer;
+		}
+	}
+
+	public AccelerometerEventArgs(Vector3 accel)
+	{
+		_accelerometer = accel;
 	}
 }

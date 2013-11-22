@@ -24,11 +24,13 @@ public class ServiceManager
 
     private ServiceManager()
     {
-		EventManager eventManager = new EventManager();
-		_services.Add(ServiceType.EventManager, eventManager);
-        _services.Add(ServiceType.InputManager, GameObject.Find ("InputManager").GetComponent<InputManager>());
-		_services.Add(ServiceType.StatsManager, new StatsManager(eventManager));
+
     }
+
+	public void AddService(ServiceType st, IService service)
+	{
+		_services.Add(st, service);
+	}
 
     public IService GetService(ServiceType type)
     {
@@ -39,13 +41,6 @@ public class ServiceManager
     {
         return (T)_services[type];
     }
-}
-
-public enum ServiceType
-{
-    EventManager,
-    InputManager,
-	StatsManager
 }
 
 public interface IService

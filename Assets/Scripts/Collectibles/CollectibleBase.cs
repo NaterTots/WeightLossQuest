@@ -10,20 +10,35 @@ public class CollectibleBase : MonoBehaviour
 	//The particle effect that plays (once) when the collectible dies (is picked up)
 	public Transform DeadParticleEffect;
 
-	//The mesh, rigid body, and collider corresponding to the collectible
-	public Transform CollectibleMesh;
-
-	//A method that gets called when the collectible is picked up
-	public PickupMethod PickupEffect;
+	void Start()
+	{
+		if (AliveParticleEffect != null)
+		{
+			AliveParticleEffect.GetComponent<ParticleSystem>().Play ();
+		}
+	}
 
 	void OnCollisionEnter(Collision coll)
 	{
-		//TODO:figure out this
-		if (...)
+		if (coll.gameObject.name == "Fatty")
 		{
-			DeadParticleEffect.GetComponent<ParticleEffect>().Play();
-			PickupEffect();
-			Destroy(this.gameObject);
+			if (AliveParticleEffect != null)
+			{
+				AliveParticleEffect.GetComponent<ParticleSystem>().Stop();
+			}
+
+			if (DeadParticleEffect != null)
+			{
+				DeadParticleEffect.GetComponent<ParticleSystem>().Play();
+			}
+
+			OnPickup();
+			Destroy (this.gameObject);
 		}
+	}
+
+	public virtual void OnPickup()
+	{
+		//Nothing
 	}
 }
