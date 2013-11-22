@@ -1,24 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HUDScript : MonoBehaviour {
-
-	public static string WeightChange = "WeightChange";
-	public static string NewWeight = "NewWeight";
-
+public class HUDScript : MonoBehaviour 
+{
 	private GUIText weightLabelText;
 	private float currentWeight;
 
 	void Awake()
 	{
 		EventManager eventManager = ServiceManager.Instance.GetService<EventManager>(ServiceType.EventManager);
-		eventManager.Register(WeightChange);
-		eventManager.Register(NewWeight);
-		eventManager.Subscribe(NewWeight, OnNewWeight);
+		eventManager.Subscribe(StatsManager.NewWeight, OnNewWeight);
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		GameObject weightLabel = GameObject.Find("WeightLabel");
 		weightLabelText = weightLabel.GetComponent<GUIText>();
 
@@ -27,7 +23,8 @@ public class HUDScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
 	}
 

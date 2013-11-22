@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StatsManager : IService {
+public class StatsManager : IService 
+{
+	public static string WeightChange = "WeightChange";
+	public static string NewWeight = "NewWeight";
 
 	public float CurrentWeight = 2000F;
 
@@ -11,13 +14,15 @@ public class StatsManager : IService {
 	public StatsManager (EventManager eventMan) 
 	{
 		eventManager = eventMan;
+		eventManager.Register(WeightChange);
+		eventManager.Register(NewWeight);
+
+		eventManager.Subscribe(WeightChange, OnWeightChange);
 	}
 
 	public void Initialize()
-	{
-		eventManager.Subscribe(HUDScript.WeightChange, OnWeightChange);
-
-		eventManager.FireEvent(HUDScript.NewWeight, new NewWeightEventArgs(CurrentWeight));
+	{		
+		eventManager.FireEvent(NewWeight, new NewWeightEventArgs(CurrentWeight));
 	}
 
 	void OnWeightChange(IEventArgs args)
@@ -30,7 +35,7 @@ public class StatsManager : IService {
 			CurrentWeight = 0f;
 		}
 
-		eventManager.FireEvent(HUDScript.NewWeight, new NewWeightEventArgs(CurrentWeight));
+		eventManager.FireEvent(NewWeight, new NewWeightEventArgs(CurrentWeight));
 	}
 
 	#region IService implementation
