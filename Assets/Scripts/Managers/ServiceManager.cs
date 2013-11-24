@@ -32,6 +32,11 @@ public class ServiceManager
 		_services.Add(st, service);
 	}
 
+	public bool ContainsService(ServiceType type)
+	{
+		return _services.ContainsKey(type);
+	}
+
     public IService GetService(ServiceType type)
     {
         return _services[type];

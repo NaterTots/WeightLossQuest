@@ -10,11 +10,26 @@ public class CollectibleBase : MonoBehaviour
 	//The particle effect that plays (once) when the collectible dies (is picked up)
 	public Transform DeadParticleEffect;
 
+	private float lifeTimer;
+	private float collectibleLifetime;
+
 	void Start()
 	{
+		lifeTimer = 0f;
+
 		if (AliveParticleEffect != null)
 		{
 			AliveParticleEffect.GetComponent<ParticleSystem>().Play ();
+		}
+	}
+
+	void Update()
+	{
+		lifeTimer += Time.deltaTime;
+		if (lifeTimer > collectibleLifetime)
+		{
+			//TODO: add a particle effect that shows it evaporating away
+			Destroy (this.gameObject);
 		}
 	}
 
@@ -35,6 +50,11 @@ public class CollectibleBase : MonoBehaviour
 			OnPickup();
 			Destroy (this.gameObject);
 		}
+	}
+
+	public void SetLifetime(float lifetime)
+	{
+		collectibleLifetime = lifetime;
 	}
 
 	public virtual void OnPickup()
