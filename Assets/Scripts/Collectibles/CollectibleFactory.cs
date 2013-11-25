@@ -35,7 +35,6 @@ public class CollectibleFactory : MonoBehaviour, IService
 		}
 
 		int collectibleRange = Random.Range (0, totalOdds);
-		Debug.Log ("Total: " + totalOdds.ToString() + ", Range: " + collectibleRange.ToString());
 		for (int i = 0; i < possibleCollectibles.Count; i++) 
 		{
 			collectibleRange -= possibleCollectibles[i].oddsOfCollectible;

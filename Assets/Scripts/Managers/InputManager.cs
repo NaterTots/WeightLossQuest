@@ -4,7 +4,6 @@ using System.Collections;
 public class InputManager : MonoBehaviour, IService 
 {
 	public static string CharacterMove = "Input_MoveCharacter";
-
 	public static string Accelerometer = "Input_Accelerometer";
 
 

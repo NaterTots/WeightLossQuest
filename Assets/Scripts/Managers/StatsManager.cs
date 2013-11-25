@@ -25,6 +25,12 @@ public class StatsManager : IService
 		eventManager.FireEvent(NewWeight, new NewWeightEventArgs(CurrentWeight));
 	}
 
+	public void SetWeight(float weight)
+	{
+		CurrentWeight = weight;
+		eventManager.FireEvent(NewWeight, new NewWeightEventArgs(CurrentWeight));
+	}
+
 	void OnWeightChange(IEventArgs args)
 	{
 		WeightChangeEventArgs weightChangeArgs = (WeightChangeEventArgs)args;
