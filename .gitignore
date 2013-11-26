@@ -1,17 +1,19 @@
 # =============== #
 # Unity generated #
 # =============== #
-/Temp/
-/[Oo]bj/
-/UnityGenerated/
-/Library/
+[Tt]emp/
+[Oo]bj/
+UnityGenerated/
+[Ll]ibrary/
 /Mono/
 *.exe
 *.dll
 Assembly-CSharp-vs.csproj
 Assembly-CSharp.csproj
-Weight Loss Quest.sln
-Weight Loss Quest-csharp.sln
+*.sln
+/*.csproj
+/*.suo
+WeightLossQuest_Data/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
