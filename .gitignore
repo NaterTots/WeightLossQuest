@@ -1,13 +1,17 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
-Obj/
-UnityGenerated/
-Library/
-Mono/
+/Temp/
+/[Oo]bj/
+/UnityGenerated/
+/Library/
+/Mono/
 *.exe
 *.dll
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+Weight Loss Quest.sln
+Weight Loss Quest-csharp.sln
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -22,6 +26,10 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+[Bb]in
+[Rr]elease
+[Dd]ebug
+/Build
 
 # ============ #
 # OS generated #
@@ -34,3 +42,4 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+Desktop.ini
